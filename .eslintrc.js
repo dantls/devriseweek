@@ -9,6 +9,12 @@ module.exports = {
       },
     },
   },
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 12,
+  },
   rules: {
     semi: [2, 'never'],
     'no-extra-boolean-cast': 'off',

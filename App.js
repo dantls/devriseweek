@@ -1,7 +1,10 @@
+import 'react-native-gesture-handler'
 import React from 'react'
-import { SplashScreen } from './src/screens/SplashScreen'
+import Routes from './src/routes'
 import { ThemeProvider } from 'styled-components'
 import AppLoading from 'expo-app-loading'
+import { StatusBar } from 'react-native'
+import { theme } from './src/styles'
 import {
   useFonts,
   SourceSansPro_400Regular,
@@ -9,8 +12,7 @@ import {
   SourceSansPro_700Bold,
   SourceSansPro_900Black,
 } from '@expo-google-fonts/source-sans-pro'
-import { StatusBar } from 'react-native'
-import { theme } from './src/styles'
+import { SplashScreen } from './src/screens'
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -24,13 +26,13 @@ export default function App() {
   }
   return (
     <ThemeProvider theme={theme}>
-      <SplashScreen />
       <StatusBar
         barStyle="light-content"
-        backgroundColor="transparent"
-        translucent
-        networkActivityIndicatorVisible={true}
+        // backgroundColor="transparent"
+        // translucent
+        // networkActivityIndicatorVisible={true}
       />
+      <Routes />
     </ThemeProvider>
   )
 }
