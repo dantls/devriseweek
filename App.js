@@ -1,19 +1,34 @@
-import React from 'react';
-import { SplashScreen } from './src/screens/SplashScreen';
-import { StatusBar } from 'react-native';
-
+import React from 'react'
+import { SplashScreen } from './src/screens/SplashScreen'
+import AppLoading from 'expo-app-loading'
+import {
+  useFonts,
+  SourceSansPro_400Regular,
+  SourceSansPro_600SemiBold,
+  SourceSansPro_700Bold,
+  SourceSansPro_900Black,
+} from '@expo-google-fonts/source-sans-pro'
+import { StatusBar } from 'react-native'
 
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    SourceSansPro_400Regular,
+    SourceSansPro_600SemiBold,
+    SourceSansPro_700Bold,
+    SourceSansPro_900Black,
+  })
+  if (!fontsLoaded) {
+    return <AppLoading />
+  }
   return (
     <>
       <SplashScreen />
       <StatusBar
-        barStyle = "light-content"
-        backgroundColor = "transparent"
+        barStyle="light-content"
+        backgroundColor="transparent"
         translucent
-        networkActivityIndicatorVisible = {true}
+        networkActivityIndicatorVisible={true}
       />
     </>
-  );
+  )
 }
-
