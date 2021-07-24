@@ -1,12 +1,13 @@
 import React from 'react'
 
-import { Container } from './styles'
-
-import { CustomText, Logo } from '../../components'
+import { CustomText, Logo, Container } from '../../components'
 
 export function SplashScreen() {
   return (
-    <Container>
+    <Container
+      align="center"
+      justify="center"
+    >
       <Logo />
       <CustomText>StarWarsWiki</CustomText>
     </Container>

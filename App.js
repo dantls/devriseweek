@@ -1,5 +1,6 @@
 import React from 'react'
 import { SplashScreen } from './src/screens/SplashScreen'
+import { ThemeProvider } from 'styled-components'
 import AppLoading from 'expo-app-loading'
 import {
   useFonts,
@@ -9,6 +10,7 @@ import {
   SourceSansPro_900Black,
 } from '@expo-google-fonts/source-sans-pro'
 import { StatusBar } from 'react-native'
+import { theme } from './src/styles'
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -21,7 +23,7 @@ export default function App() {
     return <AppLoading />
   }
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <SplashScreen />
       <StatusBar
         barStyle="light-content"
@@ -29,6 +31,6 @@ export default function App() {
         translucent
         networkActivityIndicatorVisible={true}
       />
-    </>
+    </ThemeProvider>
   )
 }
