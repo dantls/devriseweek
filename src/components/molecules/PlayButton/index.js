@@ -10,10 +10,10 @@ export function PlayButton() {
       <Ionicons
         name="play"
         color={theme.colors.black}
-        size={theme.metrics.px(12)}
+        size={theme.metrics.px(16)}
         mt={theme.metrics.px(8)}
       />
-      <CustomText fontFamily="bold" color="black" size={14}>
+      <CustomText fontFamily="bold" color="black" size={12}>
         Assistir
       </CustomText>
     </PlayButtonContainer>

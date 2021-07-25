@@ -10,19 +10,19 @@ import { CustomText, Logo } from '~/components/atoms'
 import { Tag, IconButton } from '../../molecules'
 import { PlayButton } from '../../molecules/PlayButton'
 
-export function Hero() {
+export function Hero({ item, withoutLogo }) {
+  const { image_url, type, title, subtitle } = item
+
   return (
     <HeroContainer>
-      <HeroImageBackground
-        source={{ uri: 'https://wallpaperaccess.com/full/3244446.jpg' }}
-      >
+      <HeroImageBackground source={{ uri: image_url }}>
         <HeroGradient colors={[colors.dark, 'transparent', colors.dark]}>
-          <Logo size="small" />
-          <Tag mt={200}>Filme</Tag>
+          {!withoutLogo && <Logo size="small" />}
+          <Tag mt={withoutLogo ? 224 : 200}>{type}</Tag>
           <CustomText fontFamily="bold" size={28} mt={8}>
-            Episódio IX
+            {subtitle}
           </CustomText>
-          <CustomText size={18}>The Rise of SkyWalker IX</CustomText>
+          <CustomText size={18}>{title}</CustomText>
           <ButtonsView>
             <IconButton label="Favoritos" iconName="add-circle-outline" />
             <PlayButton />

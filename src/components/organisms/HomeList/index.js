@@ -3,43 +3,26 @@ import React from 'react'
 import { Card } from '../../molecules'
 import { CustomText } from '../../atoms'
 
-import { List } from './styles'
+import { List, ListContainer } from './styles'
+import { theme } from '~/styles/theme'
 
-const FAKE_DATA = [
-  {
-    id: 0,
-    image_url:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbBdP2gSOm6AcYtmId-RB-IsS6VEYSKgNepQ&usqp=CAU',
-  },
-  {
-    id: 1,
-    image_url:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbBdP2gSOm6AcYtmId-RB-IsS6VEYSKgNepQ&usqp=CAU',
-  },
-  {
-    id: 2,
-    image_url:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbBdP2gSOm6AcYtmId-RB-IsS6VEYSKgNepQ&usqp=CAU',
-  },
-  {
-    id: 3,
-    image_url:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbBdP2gSOm6AcYtmId-RB-IsS6VEYSKgNepQ&usqp=CAU',
-  },
-  {
-    id: 4,
-    image_url:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbBdP2gSOm6AcYtmId-RB-IsS6VEYSKgNepQ&usqp=CAU',
-  },
-]
-
-export function HomeList() {
+export function HomeList({ data, title }) {
   return (
-    <List
-      data={FAKE_DATA}
-      keyExtractor={(item) => String(item.id)}
-      renderItem={({ item }) => <Card item={item} />}
-      horizontal
-    />
+    <ListContainer>
+      <CustomText fontFamily="black" size={18} ml={24}>
+        {title}
+      </CustomText>
+      <List
+        data={data}
+        keyExtractor={(item) => String(item.id)}
+        renderItem={({ item }) => <Card item={item} />}
+        horizontal
+        contentContainerStyle={{
+          paddingTop: theme.metrics.px(12),
+          paddingLeft: theme.metrics.px(24),
+          paddingBottom: theme.metrics.px(24),
+        }}
+      />
+    </ListContainer>
   )
 }

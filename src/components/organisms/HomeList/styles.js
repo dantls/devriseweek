@@ -1,5 +1,8 @@
 import styled from 'styled-components/native'
 
-export const List = styled.FlatList`
-  padding-horizontal: ${({ theme }) => theme.metrics.px(12)}px;
+export const ListContainer = styled.View`
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
 `
+export const List = styled.FlatList``
