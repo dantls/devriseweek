@@ -2,6 +2,11 @@ import React from 'react'
 import { Container } from './styles'
 import logoImage from '../../../../assets/logo.png'
 
-export function Logo() {
-  return <Container source={logoImage} />
+const sizes = {
+  small: 28,
+  large: 64,
+}
+
+export function Logo({ size }) {
+  return <Container source={logoImage} size={sizes[size || 'large']} />
 }

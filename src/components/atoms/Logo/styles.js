@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 
 export const Container = styled.Image`
-  height: 64px;
-  width: 64px;
+  height: ${({ theme, size }) => theme.metrics.px(size)}px;
+  width: ${({ theme, size }) => theme.metrics.px(size)}px;
 `
