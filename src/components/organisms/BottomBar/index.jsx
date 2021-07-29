@@ -1,6 +1,6 @@
 import React from 'react'
-import { Text } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
+import { CustomText } from '~/components'
 
 import { theme } from '~/styles/theme'
 
@@ -66,13 +66,13 @@ export function BottomBar({ state, descriptors, navigation }) {
               name={routeIcons[route.name]}
               color={isFocused ? theme.colors.red : theme.colors.white}
             />
-            <Text
+            <CustomText
               fontFamily="semiBold"
               size={10}
               color={isFocused ? 'red' : 'white'}
             >
               {label}
-            </Text>
+            </CustomText>
           </BarItem>
         )
       })}

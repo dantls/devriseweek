@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { ScreenScrollContainer, HomeList, Hero } from '~/components'
+import { ScreenScrollContainer, HomeList, Hero, Loader } from '~/components'
 
 import { useGetData } from '~/services/hooks'
 
@@ -27,18 +27,19 @@ export function Home() {
     callGetData()
   }, [])
 
+  if (loading) {
+    return (
+      <ScreenScrollContainer>
+        <Loader />
+      </ScreenScrollContainer>
+    )
+  }
+
   return (
     <ScreenScrollContainer>
-      <Hero
-        item={{
-          title: 'Episódio IX',
-          image_url: 'https://wallpaperaccess.com/full/3244446.jpg',
-          subtitle: 'The Rise of SkyWalker',
-          type: 'Filme',
-        }}
-      />
-      <HomeList data={films} title="Filmes" />
-      <HomeList data={characters} title="Personagens" />
+      <Hero item={{ ...films[9], type: 'Filme' }} />
+      <HomeList data={films} title="Filmes" type="Filme" />
+      <HomeList data={characters} title="Personagens" type="Personagem" />
     </ScreenScrollContainer>
   )
 }
