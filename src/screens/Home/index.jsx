@@ -1,41 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { ScreenScrollContainer, HomeList, Hero } from '~/components'
 
-const FAKE_DATA = [
-  {
-    id: 0,
-    type: 'Personagem',
-    image_url:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbBdP2gSOm6AcYtmId-RB-IsS6VEYSKgNepQ&usqp=CAU',
-    title: 'Darth Vader',
-    subtitle: 'Anakin SkyWalker',
-    description:
-      'Darth Vader é um personagem fictício da franquia Star Wars . O personagem é o principal antagonista da trilogia original e, como Anakin Skywalker , é o principal protagonista da trilogia prequela . O criador de Star Wars , George Lucas, se referiu coletivamente aos seis primeiros filmes episódicos da franquia como "a tragédia de Darth Vader".',
-  },
-  {
-    id: 1,
-    image_url:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbBdP2gSOm6AcYtmId-RB-IsS6VEYSKgNepQ&usqp=CAU',
-  },
-  {
-    id: 2,
-    image_url:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbBdP2gSOm6AcYtmId-RB-IsS6VEYSKgNepQ&usqp=CAU',
-  },
-  {
-    id: 3,
-    image_url:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbBdP2gSOm6AcYtmId-RB-IsS6VEYSKgNepQ&usqp=CAU',
-  },
-  {
-    id: 4,
-    image_url:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbBdP2gSOm6AcYtmId-RB-IsS6VEYSKgNepQ&usqp=CAU',
-  },
-]
+import { useGetData } from '~/services/hooks'
 
 export function Home() {
+  const [loading, setLoading] = useState(true)
+  const [films, setFilms] = useState()
+  const [characters, setCharacters] = useState()
+
+  const { getFilms, getCharacters } = useGetData(true)
+
+  const callGetData = async () => {
+    const [filmsResponse, charactersResponse] = await Promise.all([
+      getFilms(),
+      getCharacters(),
+    ])
+    if (!filmsResponse.error && !charactersResponse.error) {
+      setFilms(filmsResponse)
+      setCharacters(charactersResponse)
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    callGetData()
+  }, [])
+
   return (
     <ScreenScrollContainer>
       <Hero
@@ -46,8 +37,8 @@ export function Home() {
           type: 'Filme',
         }}
       />
-      <HomeList data={FAKE_DATA} title="Filmes" />
-      <HomeList data={FAKE_DATA} title="Personagens" />
+      <HomeList data={films} title="Filmes" />
+      <HomeList data={characters} title="Personagens" />
     </ScreenScrollContainer>
   )
 }
