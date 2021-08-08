@@ -18,7 +18,7 @@ export function Detail() {
       <CustomText ml={24} fontFamily="black" size={18}>
         Descrição
       </CustomText>
-      <CustomText mt={12} ml={24} mr={24} size={14}>
+      <CustomText mt={12} ml={24} mr={24} size={14} lh={20}>
         {selectedData.description}
       </CustomText>
     </ScreenScrollContainer>

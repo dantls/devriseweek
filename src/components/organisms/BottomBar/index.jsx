@@ -1,7 +1,8 @@
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
-import { CustomText } from '~/components'
+import { CustomText } from '~/components/atoms/'
 
+import { Text } from 'react-native'
 import { theme } from '~/styles/theme'
 
 import { BottomBarContainer, BarItem } from './styles'
