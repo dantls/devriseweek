@@ -33,8 +33,31 @@ export const useFavorites = () => {
     return []
   }
 
+  const removeFavorite = async (data) => {
+    try {
+      let newDB
+      const value = await AsyncStorage.getItem(DB_KEY)
+
+      if (value !== null) {
+        const db = JSON.parse(value)
+
+        newDB = db.filter((item) => {
+          item.id !== data.id && item.type !== data.type
+        })
+      }
+      const JSONValue = JSON.stringify(newDB)
+      await AsyncStorage.setItem(DB_KEY, JSONValue)
+
+      return newDB
+    } catch (error) {
+      console.log(error)
+      return { error }
+    }
+  }
+
   return {
     getFavorites,
     addFavorite,
+    removeFavorite,
   }
 }

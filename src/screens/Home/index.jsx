@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
-import { ScreenScrollContainer, HomeList, Hero, Loader } from '~/components'
+import {
+  Container,
+  ScreenScrollContainer,
+  HomeList,
+  Hero,
+  Loader,
+} from '~/components'
 
 import { useGetData } from '~/services/hooks'
 
@@ -25,13 +31,14 @@ export function Home() {
 
   useEffect(() => {
     callGetData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (loading) {
     return (
-      <ScreenScrollContainer>
+      <Container align="center" justify="center">
         <Loader />
-      </ScreenScrollContainer>
+      </Container>
     )
   }
 

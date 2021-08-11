@@ -16,11 +16,10 @@ export const ScreenScrollContainer = styled.ScrollView.attrs(
       ? {
           paddingHorizontal:
             Platform.OS === 'ios' ? theme.metrics.px(24) : theme.metrics.px(12),
-          paddingVertical:
-            Platform.OS === 'ios' ? theme.metrics.px(56) : theme.metrics.px(24),
+          paddingVertical: theme.metrics.px(56),
         }
       : {},
-  }),
+  })
 )`
   background-color: ${({ bg, theme }) => theme.colors[bg || 'dark']};
 `
