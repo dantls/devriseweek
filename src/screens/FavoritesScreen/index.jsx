@@ -23,7 +23,7 @@ export function FavoritesScreen({ navigation }) {
       <CustomText fontFamily="bold" size={28} mb={24}>
         Favorites
       </CustomText>
-      <GridList data={favoritesList} />
+      <GridList type="favorites" data={favoritesList} />
     </ScreenScrollContainer>
   )
 }
