@@ -10,4 +10,5 @@ export const Container = styled.Text`
   margin-left: ${({ theme, ml }) => theme.metrics.px(ml || 0)}px;
   margin-right: ${({ theme, mr }) => theme.metrics.px(mr || 0)}px;
   line-height: ${({ theme, size, lh }) => theme.metrics.px(lh || size || 24)}px;
+  text-align: ${({ align }) => align || 'left'};
 `

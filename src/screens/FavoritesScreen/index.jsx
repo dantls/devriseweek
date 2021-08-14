@@ -21,7 +21,7 @@ export function FavoritesScreen({ navigation }) {
   return (
     <ScreenScrollContainer withPadding>
       <CustomText fontFamily="bold" size={28} mb={24}>
-        Favorites
+        Favoritos
       </CustomText>
       <GridList type="favorites" data={favoritesList} />
     </ScreenScrollContainer>

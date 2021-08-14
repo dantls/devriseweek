@@ -41,16 +41,16 @@ export const useFavorites = () => {
       if (value !== null) {
         const db = JSON.parse(value)
 
-        newDB = db.filter((item) => {
-          item.id !== data.id && item.type !== data.type
-        })
+        newDB = db.filter(
+          (item) => !(item.id === data.id && item.type === data.type)
+        )
       }
       const JSONValue = JSON.stringify(newDB)
       await AsyncStorage.setItem(DB_KEY, JSONValue)
 
       return newDB
     } catch (error) {
-      console.log(error)
+      console.log({ error })
       return { error }
     }
   }

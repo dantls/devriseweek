@@ -7,7 +7,7 @@ import {
 } from './styles'
 import { colors } from '~/styles/colors'
 import { CustomText, Logo } from '~/components/atoms'
-import { Tag, IconButton } from '../../molecules'
+import { Tag, IconButton, FavoriteStateModal } from '../../molecules'
 import { PlayButton } from '../../molecules/PlayButton'
 import { useFavorites } from '~/services/hooks'
 import { useNavigation } from '@react-navigation/core'
@@ -17,16 +17,22 @@ export function Hero({ item, withoutLogo }) {
   const navigation = useNavigation()
   const { setSelectedData } = useDataStore()
   const [loading, setLoading] = useState(false)
+  const [showFavoriteModal, setShowFavoriteModal] = useState(null)
   const [isFavorite, setIsFavorite] = useState(false)
   const { image_url, type, title, subtitle } = item
   const { addFavorite, getFavorites, removeFavorite } = useFavorites()
 
+  const closeFavoriteModal = () => {
+    setTimeout(() => {
+      setShowFavoriteModal(null)
+    }, 1000)
+  }
+
   const checkIsFavorite = async () => {
     setLoading(true)
     const favorites = await getFavorites()
-    console.log(favorites)
     const isInFavorites = favorites.filter(
-      (favorite) => favorite.id === item.id && favorite.type === item.type
+      (favorite) => favorite.id === item.id && favorite.type === item.type,
     )
     setIsFavorite(isInFavorites.length > 0)
     setLoading(false)
@@ -38,11 +44,15 @@ export function Hero({ item, withoutLogo }) {
 
   const handleAddFavorite = async () => {
     await addFavorite(item)
+    setShowFavoriteModal('added')
     checkIsFavorite()
+    closeFavoriteModal()
   }
   const handleRemoveFavorite = async () => {
     await removeFavorite(item)
+    setShowFavoriteModal('removed')
     checkIsFavorite()
+    closeFavoriteModal()
   }
 
   const handleOpenDetail = () => {
@@ -78,6 +88,13 @@ export function Hero({ item, withoutLogo }) {
           </ButtonsView>
         </HeroGradient>
       </HeroImageBackground>
+      {!!showFavoriteModal && (
+        <FavoriteStateModal
+          type={showFavoriteModal}
+          visible={!!showFavoriteModal}
+          onClose={() => setShowFavoriteModal(null)}
+        />
+      )}
     </HeroContainer>
   )
 }
