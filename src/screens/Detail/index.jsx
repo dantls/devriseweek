@@ -13,7 +13,7 @@ export function Detail() {
   const { selectedData } = useDataStore()
   return (
     <ScreenScrollContainer>
-      <Hero item={selectedData} withoutLogo />
+      <Hero item={selectedData} onDetail withoutLogo />
       <BackButton />
       <CustomText ml={24} fontFamily="black" size={18}>
         Descrição

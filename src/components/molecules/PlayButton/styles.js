@@ -1,6 +1,7 @@
 import styled from 'styled-components/native'
 
 export const PlayButtonContainer = styled.TouchableOpacity`
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   height: ${({ theme }) => theme.metrics.px(36)}px;

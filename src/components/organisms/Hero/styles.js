@@ -18,7 +18,7 @@ export const HeroGradient = styled(LinearGradient)`
 
 export const ButtonsView = styled.View`
   flex-direction: row;
-  width: 100%;
+  width: ${({ onDetail }) => (!!onDetail ? '65%' : '100%')};
   align-items: center;
   margin-top: ${({ theme }) => theme.metrics.px(16)}px;
   justify-content: space-between;

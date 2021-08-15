@@ -13,10 +13,9 @@ import { useFavorites } from '~/services/hooks'
 import { useNavigation } from '@react-navigation/core'
 import { useDataStore } from '~/services/stores'
 
-export function Hero({ item, withoutLogo }) {
+export function Hero({ item, withoutLogo, onDetail }) {
   const navigation = useNavigation()
   const { setSelectedData } = useDataStore()
-  const [loading, setLoading] = useState(false)
   const [showFavoriteModal, setShowFavoriteModal] = useState(null)
   const [isFavorite, setIsFavorite] = useState(false)
   const { image_url, type, title, subtitle } = item
@@ -29,13 +28,11 @@ export function Hero({ item, withoutLogo }) {
   }
 
   const checkIsFavorite = async () => {
-    setLoading(true)
     const favorites = await getFavorites()
     const isInFavorites = favorites.filter(
-      (favorite) => favorite.id === item.id && favorite.type === item.type,
+      (favorite) => favorite.id === item.id && favorite.type === item.type
     )
     setIsFavorite(isInFavorites.length > 0)
-    setLoading(false)
   }
   useEffect(() => {
     checkIsFavorite()
@@ -59,6 +56,10 @@ export function Hero({ item, withoutLogo }) {
     setSelectedData(item)
     navigation.navigate('Detail')
   }
+  const handleOpenWatch = () => {
+    setSelectedData(item)
+    navigation.navigate('Watch')
+  }
   return (
     <HeroContainer>
       <HeroImageBackground source={{ uri: image_url }}>
@@ -69,7 +70,7 @@ export function Hero({ item, withoutLogo }) {
             {subtitle}
           </CustomText>
           <CustomText size={18}>{title}</CustomText>
-          <ButtonsView>
+          <ButtonsView onDetail={onDetail}>
             <IconButton
               label={isFavorite ? 'Remove Favoritos' : 'Add Favoritos'}
               iconName={
@@ -79,12 +80,14 @@ export function Hero({ item, withoutLogo }) {
                 isFavorite ? handleRemoveFavorite() : handleAddFavorite()
               }
             />
-            <PlayButton />
-            <IconButton
-              onPress={() => handleOpenDetail()}
-              label="Saiba mais"
-              iconName="information-circle-outline"
-            />
+            {type !== 'Personagem' && <PlayButton onPress={handleOpenWatch} />}
+            {!onDetail && (
+              <IconButton
+                onPress={handleOpenDetail}
+                label="Saiba mais"
+                iconName="information-circle-outline"
+              />
+            )}
           </ButtonsView>
         </HeroGradient>
       </HeroImageBackground>
