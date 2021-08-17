@@ -1,4 +1,4 @@
-<h1 align="center" color="red" name="title">StarWarsWiki</h1>
+<h1 align="center" name="title">StarWarsWiki</h1>
 
 
 # :pushpin: Tabela de conteúdos
