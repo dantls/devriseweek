@@ -62,7 +62,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Youtube PlayList](https://www.youtube.com/playlist?list=PL4zG19BCs4pdPJzElbUxCykHTClU-B0Ts)
 - [API](https://sevencoders-starwars-wiki.herokuapp.com)
 
-<p align="center">
+<p name="tecnologias" align="center">
   <img src="https://github.com/dantls/devriseweek/blob/main/assets/app.png" height=600 width=300 alt="previous" />
 </p>
 
