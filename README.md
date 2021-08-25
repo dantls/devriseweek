@@ -4,11 +4,11 @@
 # :pushpin: Tabela de conteúdos
 <!--ts-->
    * [Sobre](#sobre)
-   * [Preview do Projeto](#preview)
    * [Como rodar o projeto](#run)
       * [Startar o Mobile](#api)
    * [Tecnologias](#tecnologias)
    * [Links](#links)
+   * [Preview do Projeto](#preview)
    * [Licença](#license)
 <!--te-->
 
@@ -56,13 +56,14 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 <h1 name="links">Links</h1>
 
-## Links Úteis
-
 - [Figma](https://www.figma.com/file/FcJqDIFJpy43Zik4QhoJ39/DevRiseWeek-StarWars?node-id=2%3A2)
 - [Youtube PlayList](https://www.youtube.com/playlist?list=PL4zG19BCs4pdPJzElbUxCykHTClU-B0Ts)
 - [API](https://sevencoders-starwars-wiki.herokuapp.com)
 
-<p name="tecnologias" align="center">
+
+<h1 name="preview">Preview</h1>
+
+<p align="center">
   <img src="https://github.com/dantls/devriseweek/blob/main/assets/app.png" height=600 width=300 alt="previous" />
 </p>
 
